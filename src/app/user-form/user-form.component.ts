@@ -14,25 +14,23 @@ export class UserFormComponent extends FormCanDeactivate   {
   })
   
   name:string;
-  //buttonDisabled: boolean = false;
+  //submitted = false;
+
+    /* Select Dropdown error handling, but it's not working bc of hasError() */
+  // public handleError = (controlName: string, errorName: string) => {
+  //   return this.mustComment.controls[controlName].hasError(errorName);
+  // }
 
   constructor(private fb: FormBuilder) {
     super()
    }
 
-  //public mustComment: FormGroup;
-  // mustComment = new FormGroup({
-    
-  // });
-
   @ViewChild('form')
   form: NgForm;
-  // mustComment = new FormGroup({
-  //   choose: new FormControl()
-  // });
 
   onChange(e) {
-    this.mustComment.get('name').setValue(e.target.value, {
+    //this.submitted = true;
+    this.mustComment.get('choose').setValue(e.target.value, {
       onlySelf: true
     })
   }
