@@ -1,10 +1,14 @@
-<form #form="ngForm" (ngSubmit)="submit()">
-  <label>name</label>
-  <button type="submit">Submit</button>
-  <input [(ngModel)]="name" name="name"/>
-<select #select (change)="onChange()">
-  <option value ="1">one</option>
-  <option value ="2">two</option>
-  <option value ="3">three</option>
-</select>
+<form #form="ngForm" [formGroup]="mustComment" (ngSubmit)="onSubmit()">
+  <select formControlName="choose" (change)="onChange($event)">
+    <option value ="">Choose One</option>
+    <option value ="Yes">Yes</option>
+    <option value ="No">No</option>
+  </select>
+  <label> Comment: 
+    <input formControlName="comment" type="text" required [(ngModel)]="name" name="name"/>
+  </label>
+  <!--<div class="error-block" *ngIf="submitted && handleError('name', 'required')">
+    You must provide a comment!
+  </div>-->
+  <button [disabled]="!mustComment.valid" type="submit">Submit</button>
 </form>
